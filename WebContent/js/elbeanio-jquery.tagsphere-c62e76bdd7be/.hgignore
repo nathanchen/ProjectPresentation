@@ -1,0 +1,12 @@
+.pyc$
+.svn
+^parts/
+^bin/
+^include/
+^lib/
+^develop-eggs/
+^downloads/
+^eggs/
+^parts/
+^.installed.cfg
+^db$
