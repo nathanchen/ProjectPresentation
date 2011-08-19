@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script language="javascript" src="./js/elbeanio-jquery.tagsphere-c62e76bdd7be/ext/jquery.mousewheel.min.js"></script>
 <script language="javascript" src="./js/elbeanio-jquery.tagsphere-c62e76bdd7be/jquery.tagsphere.js"></script>
 <script language="javascript" src="./js/elbeanio-jquery.tagsphere-c62e76bdd7be/jquery.tagsphere.min.js"></script>
@@ -64,22 +66,28 @@
 
 
 
+
 </head>
-
-
+<body>
 
 <!-- testing TESTING -->
 <body>
 	<form>
 		<div id="tags" style="width:500px;height:500px;">
-			 <ul>
-			   <li><a href="#" rel="10">link 1</a></li>
-			   <li><a href="#" rel="5">link 2</a></li>
-			   <li><a href="#" rel="20">link 3</a></li>
-			   <li><a href="#" rel="20">link 4</a></li>
-			   <li><a href="#" rel="20">link 5</a></li>
+			<ul>
+				<s:iterator value="tags">
+				 	<li>
+				 	<s:url var="fancyUrl" action="fancy" namespace="/struts">
+				 		<s:param name="clusterLoc">
+				 			<s:property value="clusterLoc"/>
+				 		</s:param>
+				 	</s:url>
+				 	<a href="javascript:displayFancyBoxJS('${fancyUrl}')" rel="10"><s:property value="info"/></a></li>
+				 </s:iterator>
 			</ul>
 		</div>
+		
+		
 		<a title="HERE IS THE TITLE ^o^v" id="example5" href="http://www.youtube.com/watch?v=071KqJu7WVo&feature=player_embedded#at=41">
 			<img src="http://farm3.static.flickr.com/2502/5767667841_d23dc43103_t.jpg" alt="example5" id="5767667841">
 		</a>
@@ -87,8 +95,8 @@
 		
 		<div id="g1" class="galleryCont">
 		    <img src="./js/jquery.mb.maskedGallery.1.9.2/images/3.jpg" >
-		    <img src="./js/jquery.mb.maskedGallery.1.9.2/images/2.jpg" >
-		    <img src="./js/jquery.mb.maskedGallery.1.9.2/images/5.jpg"  >
+		    <img src="./js/jquery.mb.maskedGallery.1.9.2/images/2.jpg" class="{url:'test.html'}">
+		    <img src="./js/jquery.mb.maskedGallery.1.9.2/images/5.jpg"  class="{script:'alert(\'PIPPO\')'}">
 		    <img src="./js/jquery.mb.maskedGallery.1.9.2/images/4.jpg">
 		    <img src="./js/jquery.mb.maskedGallery.1.9.2/images/6.jpg">
 		    <img src="./js/jquery.mb.maskedGallery.1.9.2/images/7.jpg">

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="basicstruct2" extends="json-default" namespace="/struts">
+		<action name="listDemos" class="controller.UserAction" method="listDemos">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		
+		<action name="display" class="controller.UserAction" method="display">
+			<result name="success">/main.jsp</result>
+		</action>
+	</package>
+	
+</struts>
