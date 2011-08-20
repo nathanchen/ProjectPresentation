@@ -18,10 +18,26 @@ public class UserAction extends ActionSupport implements SessionAware
 {
 
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Demo> uri;
 	private String fileLoc;
 	private List<Cluster> clusters;
 	private List<Tag> tags;
+	private Map session;
+	private Demo d;
+	
+
+	public Demo getD() {
+		return d;
+	}
+
+	public void setD(Demo d) {
+		this.d = d;
+	}
 	
 	public List<Demo> getUri() {
 		return uri;
@@ -58,21 +74,28 @@ public class UserAction extends ActionSupport implements SessionAware
 	
 	
 	@Override
-	public void setSession(Map<String, Object> arg0) 
+	public void setSession(Map value) 
 	{
-		// TODO Auto-generated method stub
-
+		session = value;
 	}
 	
 	public String listDemos()
 	{
-		
-		Demo d = new Demo();
+		/*
+		 * display the available demos list
+		 * 
+		 * */
+		d = new Demo();
 		d.setFileLoc("");
 		d.setInfo("info");
 		d.setNumberOfVideos(1104);
 		d.setTitle("Earthquake");
 		uri.add(d);
+		return SUCCESS;
+	}
+	
+	public String showHow()
+	{
 		return SUCCESS;
 	}
 	
