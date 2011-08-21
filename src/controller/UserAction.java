@@ -86,7 +86,7 @@ public class UserAction extends ActionSupport implements SessionAware
 		 * 
 		 * */
 		d = new Demo();
-		d.setFileLoc("");
+		d.setFileLoc("/Users/natechen/Desktop/keyframe/globalFeatures");
 		d.setInfo("info");
 		d.setNumberOfVideos(1104);
 		d.setTitle("Earthquake");
@@ -99,8 +99,14 @@ public class UserAction extends ActionSupport implements SessionAware
 		return SUCCESS;
 	}
 	
+	/*
+	 * fileLoc stores all results
+	 * 
+	 * */
+	
 	public String display()
 	{
+		fileLoc = "/Users/natechen/Desktop/keyframe/globalFeatures/";
 		try
 		{
 			File dir = new File(fileLoc);
@@ -121,7 +127,8 @@ public class UserAction extends ActionSupport implements SessionAware
 					Cluster cl = null;
 					List<String> videos = null;
 					List<String> thumbVideoLoc = null;
-					
+					clusters = new ArrayList<Cluster>();
+					tags = new ArrayList<Tag>();
 					/*
 					 * This is cluster n
 					 * Tags are ClusterLoc info
@@ -134,7 +141,7 @@ public class UserAction extends ActionSupport implements SessionAware
 					while(scn.hasNext())
 					{
 						String line = scn.nextLine();
-						if(line.contains("This is Cluster"))
+						if(line.contains("This is cluster"))
 						{
 							cl = new Cluster();
 							videos = new ArrayList<String>();
@@ -149,18 +156,36 @@ public class UserAction extends ActionSupport implements SessionAware
 						else if(line.contains("Tags are"))
 						{
 							String rest = line.substring(9).trim();
-							String[] info = rest.split(" ");
+//							String[] info = rest.split(" ");
 							
 							Tag t = new Tag();
-							t.setClusterLoc(info[0]);
-							t.setInfo(info[1]);
-							tags.add(t);
+							try
+							{
+								t.setClusterLoc(rest);
+								t.setInfo(rest);
+								tags.add(t);
+							}
+							catch(Exception e)
+							{
+								System.out.println(rest);
+								e.printStackTrace();
+							}
+							
 						}
 						else
 						{
-							String[] arr = line.split(" ");
-							thumbVideoLoc.add(arr[0]);
-							videos.add(arr[1]);
+//							String[] arr = line.split(" ");
+							try
+							{
+								thumbVideoLoc.add(line.trim());
+								videos.add(line.trim());
+							}
+							catch(Exception e)
+							{
+								System.err.println(line);
+								e.printStackTrace();
+							}
+							
 						}
 					}
 				}

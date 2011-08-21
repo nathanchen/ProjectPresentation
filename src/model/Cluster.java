@@ -28,3 +28,8 @@ public class Cluster
 	}
 	
 }
+
+//for(int i = 0; i < thumbVideoLoc.size(); i++)
+//{
+//	this.thumbVideoLoc.set(i, thumbVideoLoc.get(i));
+//}

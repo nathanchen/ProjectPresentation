@@ -7,7 +7,7 @@
 <title>Welcome</title>
 </head>
 <body>
-	<p><a href="struts/listDemos">listDemo</a></p>
+	<p><a href="struts/display">listDemo</a></p>
 	<p><a href="struts/showHow">showHow</a></p>
 </body>
 </html>
